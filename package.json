@@ -1,0 +1,36 @@
+{
+  "dependencies": {
+    "@prisma/client": "^5.17.0",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "connect-flash": "^0.1.1",
+    "cookie": "^0.6.0",
+    "cookie-parser": "^1.4.6",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
+    "express-session": "^1.18.0",
+    "flash": "^1.1.0",
+    "method-override": "^3.0.0",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.12.0"
+  },
+  "name": "giftos-html",
+  "version": "1.0.0",
+  "description": "web ban hang",
+  "main": "index.js",
+  "scripts": {
+    "test": "1234",
+    "start": "nodemon index.js"
+  },
+  "keywords": [
+    "12324"
+  ],
+  "author": "dangloi",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "prisma": "^5.17.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}

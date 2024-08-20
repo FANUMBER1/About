@@ -1,0 +1,104 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:1@localhost:5432/sell/mydb?schema=public"
+}
+
+model profile{
+  id Int  @id @default(autoincrement())
+  name String?
+  phone String?
+  address String?
+  gmail String?
+  conten1 String?
+  conten2 String?  
+}
+
+model social{
+  id Int  @id @default(autoincrement())
+  name String?
+  link String?
+  img String?
+}
+
+model product{
+  id Int  @id @default(autoincrement())
+  name String?
+  img String?
+  price String?
+  content String?
+  describe String?
+  quantity String?
+  users user_product[]
+}
+
+model review{
+  id Int  @id @default(autoincrement())
+  name String?
+  content String?
+  productname String?
+}
+
+model contact{
+  id Int  @id @default(autoincrement())
+  name String?
+  gmail String?
+  phone String?
+  message String?
+}
+
+model advertisement{
+  id Int  @id @default(autoincrement())
+  img String?
+  content String?
+  name String?
+  link String?
+  describe String?
+}
+
+model productintro{
+  id Int  @id @default(autoincrement())
+  img String?
+  content String?
+  name String?
+  link String?
+  describe String?
+}
+
+model user{
+  id Int  @id @default(autoincrement())
+  name String?
+  avata String?
+  email String?
+  pass  String?
+  roles role @relation(fields: [roleid], references: [id])
+  roleid Int
+  products user_product[]
+  
+}
+
+model role{
+  id Int  @id @default(autoincrement())
+  users user[]
+  position String?
+}
+
+model user_product{
+  id Int @id @default(autoincrement())
+  user user @relation(fields: [userid], references: [id])
+  userid Int
+  product product @relation(fields: [productid], references: [id])
+  productid Int
+  quantity String?
+}
+
+model seller{
+  id Int  @id @default(autoincrement())
+  email String?
+}
