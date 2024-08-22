@@ -98,8 +98,8 @@ module.exports={
         const soicial= await adminModel.soicial();
         const profile= await adminModel.profile();
         const sum=await handle.sumProduct(iduser)
-        var result = product.filter( (name) => {
-            return name.name.toLowerCase().indexOf(value.toLowerCase()) !== -1
+        var result = product.filter( (product) => {
+            return product.name.toLowerCase().indexOf(value.toLowerCase()) !== -1
         })
 
         res.render('./page/shop',{k1:'',k2:'active',k3:'',k4:'',k5:'',profile:profile,soicial:soicial,product:result,cart:cartProduct,active:active,sum:sum,user:user})
