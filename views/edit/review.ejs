@@ -37,21 +37,21 @@
     <div class="row text-center">
       <h1>EDIT REVIEW </h1> 
     </div>
-    <form action="/admin/edit-review/<%= data[0].id %>" method="post">
+    <form action="/admin/edit-review/<%= data.id %>" method="post">
      <div class="row justify-content-center">
          <div class="col-5 border border-dark rounded p-3 ">
             <div class="row mb-5 overflow-hidden ">
               <div class="form-group">
                  <label>Name</label>
-                 <input type="text" class="form-control" id="email" value="<%=data[0].name %>" name="name">
+                 <input type="text" class="form-control" id="email" value="<%=data.name %>" name="name">
               </div>
               <div class="form-group">
                 <label>Product</label>
-                <input type="text" class="form-control" id="email" value="<%= data[0].productName %>" name="product">
+                <input type="text" class="form-control" id="email" value="<%= data.productName %>" name="product">
              </div> 
               <div class="form-group">
                 <label>Content</label>
-                <textarea type="text" class="form-control" id="email" name="content"><%= data[0].content %></textarea>
+                <textarea type="text" class="form-control" id="email" name="content"><%= data.content %></textarea>
               </div>         
                <button type="submit" class="btn btn-default btn-dark mt-2 mb-2 " >UPDATE</button>
                <button type="button" class="btn btn-dark btn-default " ><a href="/admin/review" class="nav-link text-white" >RETURN</a></button> 

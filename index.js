@@ -42,7 +42,7 @@ app.use((req, res, next) => {
 
 //////////
 app.use('/',viewUser)
-app.use('/admin',middlewea.requireLogin,middlewea.checkAdmin,adminRouter)
+app.use('/admin',adminRouter)
 
 ///////////
 app.listen(port,()=> {

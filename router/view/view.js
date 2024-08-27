@@ -36,6 +36,6 @@ router.get('/dangki',viewControler.dangki)
 router.post('/registers/:ID',upload.single('img'),checkLogin.register,create.register)
 router.get('/logout',viewControler.logout)
 /////////
-router.post('/search',viewControler.search)
+router.get('/search',viewControler.search)
 
 module.exports=router;

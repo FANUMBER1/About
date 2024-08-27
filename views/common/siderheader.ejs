@@ -35,7 +35,7 @@
         </li>
       </ul>
       <div class="user_option">
-        <% if(user[0]==undefined){%>
+        <% if(user.id == undefined){%>
           <a href="/login">
             <i class="fa fa-user" aria-hidden="true"></i>
             <span>
@@ -45,14 +45,14 @@
           <%}else{%>
             <a href="" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasUser"
               aria-controls="offcanvasRight">
-              <img src="<%= user[0].avata %>" alt="Image" class="small-circle-img">
+              <img src="<%= user.avata %>" alt="Image" class="small-circle-img">
             </a>
             <%}%>
               <a onclick="showgiohang()" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMenu"
                 aria-controls="offcanvasRight">
                 <i class="fa fa-shopping-bag"></i>
               </a>
-              <form class="form-inline" action="/search" method="POST">
+              <form class="form-inline" action="/search" autocomplete="off" data-submitfalse="q" method="GET">
                 <button class="btn nav_search-btn mr-1" type="submit">
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
@@ -61,7 +61,6 @@
       </div>
     </div>
   </nav>
-
   <!---buy product-->
 
   <div class="offcanvas offcanvas-end offcanvas-custom-zindex overflow-auto <%= active %> " tabindex="-1"
@@ -84,7 +83,7 @@
     </div>
   </div>
 
-  <% if(user[0]!=undefined){%>
+  <% if(user){%>
     <!----INFORUSER-->
     <div class="offcanvas offcanvas-end offcanvas-custom-zindex overflow-auto  " tabindex="-1" id="offcanvasUser">
       <!-- Offcanvas header -->
@@ -99,14 +98,14 @@
         <!-- cvbvcxzXcvbn -->
         <div class="row g-2 p-2 border-bottom justify-content-center">
           <!-- Image -->
-          <img src="<%= user[0].avata %>" alt="Image" class="big-circle-img">
+          <img src="<%= user.avata %>" alt="Image" class="big-circle-img">
         </div>
 
         <!-- Button and price -->
         <div class="row g-2 p-2 ">
-          <p>Name: <%=user[0].name %>
+          <p>Name: <%=user.name %>
           </p>
-          <p>Email: <%=user[0].email %>
+          <p>Email: <%=user.email %>
           </p>
         </div>
       </div>

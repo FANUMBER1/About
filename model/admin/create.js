@@ -9,8 +9,8 @@ module.exports={
  checkImg:async(anh,data)=>{
      var img='';
      if(anh==undefined){
-        if(data.length >=1){
-            img= data[0].img ||data[0].avata
+        if(data!= undefined){
+            img= data.img ||data.avata
         }else{
             img='/assets/images/anhdaidien.jpg'
         }

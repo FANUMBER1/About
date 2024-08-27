@@ -7,43 +7,75 @@ const handle=require('../../model/view/handle')
 var active='';
 module.exports={
     index:async(req,res)=>{
+        var user={}
+        var cartProduct={}
         const iduser=parseInt(req.session.userId)
-        const user=await productt.user(iduser)
+        if(iduser >=0){
+            var user=await productt.user(iduser);
+            var cartProduct= await adminModel.cartProduct(iduser)
+
+        }else{
+            var user={}
+            var cartProduct={}
+        }
         const advertisement=await adminModel.advertisement();
         const profile= await adminModel.profile();
         const product=await adminModel.product();
         const productintro= await adminModel.introproduct();
         const review=await adminModel.review();
         const soicial= await adminModel.soicial();
-        const cartProduct= await adminModel.cartProduct(iduser)
         const sum=await handle.sumProduct(iduser)
         res.render('./page/index',{k1:'active',k2:'',k3:'',k4:'',k5:'',
                   advertisement:advertisement,profile:profile,product:product,productintro:productintro,
                   review:review,soicial:soicial,cart:cartProduct,active:active,sum:sum,user:user})
     },
     contact:async(req,res)=>{
+        var user={}
+        var cartProduct={}
         const iduser=parseInt(req.session.userId)
-        const user=await productt.user(iduser)
+        if(iduser >=0){
+            var user=await productt.user(iduser);
+            var cartProduct= await adminModel.cartProduct(iduser)
+
+        }else{
+            var user={}
+            var cartProduct={}
+        }
         const profile= await adminModel.profile();
         const soicial= await adminModel.soicial();
-        const cartProduct= await adminModel.cartProduct(iduser)
         const sum=await handle.sumProduct(iduser)
         res.render('./page/contact',{k1:'',k2:'',k3:'',k4:'',k5:'active',profile:profile,soicial:soicial,cart:cartProduct,active:active,sum:sum,user:user})
     },
     testimonial:async(req,res)=>{
+        var user={}
+        var cartProduct={}
         const iduser=parseInt(req.session.userId)
-        const user=await productt.user(iduser)
+        if(iduser >=0){
+            var user=await productt.user(iduser);
+            var cartProduct= await adminModel.cartProduct(iduser)
+
+        }else{
+            var user={}
+            var cartProduct={}
+        }
         const review=await adminModel.review();
         const soicial= await adminModel.soicial();
         const profile= await adminModel.profile();
-        const cartProduct= await adminModel.cartProduct(iduser)
         const sum=await handle.sumProduct(iduser)
         res.render('./page/testimonial',{k1:'',k2:'',k3:'',k4:'active',k5:'',review:review,profile:profile,soicial:soicial,cart:cartProduct,active:active,sum:sum,user:user})
     },
     shop:async(req,res)=>{
+        var user={}
+        var cartProduct={}
         const iduser=parseInt(req.session.userId)
-        const user=await productt.user(iduser)
-        const cartProduct= await adminModel.cartProduct(iduser)
+        if(iduser >=0){
+            var user=await productt.user(iduser);
+            var cartProduct= await adminModel.cartProduct(iduser)
+
+        }else{
+            var user={}
+            var cartProduct={}
+        }
         const product=await adminModel.product();
         const soicial= await adminModel.soicial();
         const profile= await adminModel.profile();
@@ -51,9 +83,17 @@ module.exports={
         res.render('./page/shop',{k1:'',k2:'active',k3:'',k4:'',k5:'',profile:profile,soicial:soicial,product:product,cart:cartProduct,active:active,sum:sum,user:user})
     },
     product:async(req,res)=>{
-         const iduser=parseInt(req.session.userId)
-         const user=await productt.user(iduser)
-         const cartProduct= await adminModel.cartProduct(iduser)
+        var user={}
+        var cartProduct={}
+        const iduser=parseInt(req.session.userId)
+        if(iduser >=0){
+            var user=await productt.user(iduser);
+            var cartProduct= await adminModel.cartProduct(iduser)
+
+        }else{
+            var user={}
+            var cartProduct={}
+        }
          const id=parseInt(req.params.ID)
          const data=await productt.product(id)
          const soicial= await adminModel.soicial();
@@ -64,9 +104,17 @@ module.exports={
     },
 
     why:async(req,res)=>{
+        var user={}
+        var cartProduct={}
         const iduser=parseInt(req.session.userId)
-        const user=await productt.user(iduser)
-        const cartProduct= await adminModel.cartProduct(iduser)
+        if(iduser >=0){
+            var user=await productt.user(iduser);
+            var cartProduct= await adminModel.cartProduct(iduser)
+
+        }else{
+            var user={}
+            var cartProduct={}
+        }
         const soicial= await adminModel.soicial();
         const profile= await adminModel.profile();
         const sum=await handle.sumProduct(iduser)
@@ -90,10 +138,15 @@ module.exports={
         });
       },
       search:async(req,res)=>{
-        const value= req.body.timkiem;
+        const value= req.query.timkiem;
         const product= await adminModel.product()
+        var user={}
         const iduser=parseInt(req.session.userId)
-        const user=await productt.user(iduser)
+        if(iduser >=0){
+            var user=await productt.user(iduser)
+        }else{
+            var user={}
+        }
         const cartProduct= await adminModel.cartProduct(iduser)
         const soicial= await adminModel.soicial();
         const profile= await adminModel.profile();

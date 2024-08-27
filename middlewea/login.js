@@ -22,7 +22,7 @@ module.exports = {
   checkAdmin: async (req, res, next) => {
     const id = parseInt(req.session.userId);
     const data= await modelLogin.infuser(id)
-    if (data[0].position != 'Admin') {
+    if (data.roles.position != 'Admin') {
       res.redirect('/login')
     } else {
       next();

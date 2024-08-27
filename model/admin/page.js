@@ -3,64 +3,84 @@ const prisma = new PrismaClient();
 module.exports={
     ////profile
     profile:async()=>{
-        const data= await prisma.$queryRaw`select * from "profile"`
+        const data= await prisma.profile.findMany()
         return data;
     },
     /////product
     product:async()=>{
-        const data= await prisma.$queryRaw`select * from "product"`
+        const data= await prisma.product.findMany()
         return data;
     },
     /////review
     review:async()=>{
-        const data= await prisma.$queryRaw`select * from "review"`
+        const data= await prisma.review.findMany()
         return data;
     },
     ////advertisement
     advertisement:async()=>{
-        const data= await prisma.$queryRaw`select * from "advertisement"`
+        const data= await prisma.advertisement.findMany()
         return data;
 
     },
     /////intrpproduct
     introproduct:async()=>{
-        const data= await prisma.$queryRaw`select * from "productintro"`
+        const data= await prisma.productintro.findMany()
         return data;
     },
     //////soicial
     soicial:async()=>{
-        const data= await prisma.$queryRaw`select * from "social" `
+        const data= await prisma.social.findMany()
         return data;
     },
     //////contact
     contact:async()=>{
-        const data= await prisma.$queryRaw`select * from "contact" `
+        const data= await prisma.contact.findMany()
         return data;
     },
     /////role
     role:async(req,res)=>{
-        const data= await prisma.$queryRaw`select * from "role" `
+        const data= await prisma.role.findMany()
         return data;
     },
     //////user
     user:async()=>{
-        const data= await prisma.$queryRaw`
-        select "user".id as id, name , avata ,email , pass, role.position as position from "user" 
-           JOIN role on "user".roleid =role.id `       
+        const data = await prisma.user.findMany({
+            select: {
+              id: true,
+              name: true,
+              avata: true,
+              email: true,
+              pass: true,
+              roles: {
+                select: {
+                  position: true,  
+                },
+              },
+            },
+          });     
          return data;
     },
     //////cart product
     cartProduct:async(id)=>{
-        const data= await prisma.$queryRaw`
-        select "product".name,"product".price,"product".img,"user_product".quantity as quantity,"user_product".id as idcart from "product"
-        JOIN "user_product" ON "product".id="user_product".productid
-        JOIN "user" ON "user".id="user_product".userid
-        where "user_product".userid=${id}`
+        const data= await prisma.user_product.findUnique({
+            where:{
+                userid:id
+            },
+            select:{
+                id:true,
+                quantity:true,
+                product:{
+                    name:true,
+                    price:true,
+                    img:true,
+                }
+            }
+        });
         return data;
     },
     //////seller
     seller:async()=>{
-        const data= await prisma.$queryRaw`select * from "seller" `
+        const data= await prisma.seller.findMany()
         return data;
     }
 }
